@@ -63,6 +63,10 @@ const users = computed({
 
     <RbagUserSelector
       v-if="users"
+      :form-field-options="{
+        label: 'Leitung',
+        name: 'voreinstellungen.leitung.userIds'
+      }"
       :users="users"
       :loading="pending"
       @update:model-value="(value) => { voreinstellungen.leitung.userIds = value.map(item => item.id) }"

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { FormFieldProps } from '@nuxt/ui'
 import type { User } from '~~/shared/validation/userSchema'
 
 interface UserSelectItem extends User {
@@ -11,6 +12,8 @@ const selectedUsers = defineModel<UserSelectItem[]>({ default: () => [] })
 interface Props {
   users: UserSelectItem[]
   loading?: boolean
+  emptyLabel?: string
+  formFieldOptions?: FormFieldProps
 }
 
 const open = ref(false)
@@ -23,10 +26,7 @@ const removeUser = (userId: string) => {
 </script>
 
 <template>
-  <UFormField
-    label="Leitung"
-    name="voreinstellungen.leitung.userIds"
-  >
+  <UFormField v-bind="formFieldOptions">
     <USelectMenu
       v-model:model-value="selectedUsers"
       v-model:open="open"
@@ -45,11 +45,11 @@ const removeUser = (userId: string) => {
       <template #default>
         <UEmpty
           v-if="selectedUsers.length === 0"
-          title="Keiner ausgewählt"
+          :title="emptyLabel ?? 'Keiner ausgewählt'"
           class="w-full"
           :actions="[
             {
-              label: 'Mitglied auswählen',
+              label: 'Hinzufügen',
               variant: 'soft',
               icon: 'i-lucide-user-plus'
             }
