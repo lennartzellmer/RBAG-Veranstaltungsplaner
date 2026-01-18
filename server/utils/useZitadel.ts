@@ -1,6 +1,5 @@
 import type Zitadel from '@zitadel/zitadel-node/dist'
-import type { UserServiceHumanUser } from '@zitadel/zitadel-node/dist/models/user-service-human-user.js'
-import type { UserServiceUser } from '@zitadel/zitadel-node/dist/models/user-service-user.js'
+import type { UserServiceHumanUser, UserServiceUser } from '@zitadel/zitadel-node/dist'
 
 // =============================================================================
 // Types
