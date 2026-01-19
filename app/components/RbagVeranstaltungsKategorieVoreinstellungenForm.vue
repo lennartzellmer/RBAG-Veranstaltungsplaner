@@ -1,16 +1,11 @@
 <script setup lang="ts">
 import { getUsers } from '~/service/user'
+import { uploadFileToTempStorage } from '~/service/veranstaltung-kategorie'
 import type { VeranstaltungsKategorieSchema } from '~~/shared/validation/veranstaltungKategorieSchema'
 
 const voreinstellungen = defineModel<VeranstaltungsKategorieSchema['voreinstellungen']>({
   required: true
 })
-
-const mediaTypeOptions = [
-  { label: 'Bild', value: 'image' },
-  { label: 'Video', value: 'video' },
-  { label: 'Audio', value: 'audio' }
-]
 
 const { data, pending } = await useAsyncData('admin-users', () => getUsers())
 
@@ -26,6 +21,15 @@ const users = computed({
     voreinstellungen.value.leitung.userIds = event ? event.map(item => item.value) : []
   }
 })
+
+const handleFileUpload = async (file: File | null | undefined) => {
+  if (!file) {
+    voreinstellungen.value.anzeigebild.objectName = ''
+    return
+  }
+  const tempFile = await uploadFileToTempStorage(file)
+  voreinstellungen.value.anzeigebild.objectName = tempFile.key
+}
 </script>
 
 <template>
@@ -58,6 +62,24 @@ const users = computed({
         :ui="{ root: 'w-full' }"
       />
     </UFormField>
+
+    <div class="grid gap-4">
+      <UFormField
+        label="Anzeigebild"
+        name="voreinstellungen.anzeigebild.objectName"
+      >
+        <UFileUpload
+          label="Drop your image here"
+          description="SVG, PNG, JPG or GIF (max. 2MB)"
+          accept="image/*"
+          class="w-full"
+          :ui="{
+            base: 'min-h-48'
+          }"
+          @update:model-value="handleFileUpload"
+        />
+      </UFormField>
+    </div>
 
     <USeparator />
 
@@ -139,31 +161,6 @@ const users = computed({
           />
         </UFormField>
       </div>
-    </div>
-
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <UFormField
-        label="Anzeigebild Objektname"
-        name="voreinstellungen.anzeigebild.objectName"
-      >
-        <UInput
-          v-model="voreinstellungen.anzeigebild.objectName"
-          :ui="{ root: 'w-full' }"
-        />
-      </UFormField>
-      <UFormField
-        label="Medientyp"
-        name="voreinstellungen.anzeigebild.type"
-      >
-        <USelectMenu
-          v-model="voreinstellungen.anzeigebild.type"
-          class="w-full"
-          :options="mediaTypeOptions"
-          option-attribute="label"
-          value-attribute="value"
-          placeholder="Typ auswählen"
-        />
-      </UFormField>
     </div>
   </div>
 </template>

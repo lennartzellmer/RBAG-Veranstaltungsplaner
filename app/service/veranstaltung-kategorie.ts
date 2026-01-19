@@ -24,3 +24,22 @@ export async function createVeranstaltungsKategorie({ category }: { category: Ve
     body: category
   })
 }
+
+export async function uploadFileToTempStorage(file: File) {
+  const uploadData = await $fetch('/api/admin/media/init-upload', {
+    method: 'POST',
+    body: {
+      filename: file.name,
+      contentType: file.type,
+      size: file.size
+    }
+  })
+
+  await $fetch(uploadData.uploadUrl, {
+    method: 'PUT',
+    body: file,
+    headers: { 'Content-Type': uploadData.contentType }
+  })
+
+  return { key: uploadData.key }
+}

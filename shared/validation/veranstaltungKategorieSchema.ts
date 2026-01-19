@@ -12,7 +12,7 @@ export const voreinstellungenSchema = z.strictObject({
   ort: ortsSchema,
   anzeigebild: mediaSchema,
   leitung: z.object({
-    userIds: z.array(z.string())
+    userIds: z.array(z.string()).min(1, 'Es muss mindestens eine Leitung ausgewählt werden.')
   })
 })
 
