@@ -1,6 +1,5 @@
 import { z } from 'zod'
 import { AdressSchema } from './addressSchema'
-import { mediaSchema } from './mediaSchema'
 
 export const ortsSchema = AdressSchema.partial().extend({
   name: z.string().min(1, 'Ortsname muss etwas länger sein.')
@@ -10,7 +9,7 @@ export const voreinstellungenSchema = z.strictObject({
   zielgruppe: z.string().min(1, 'Zielgruppe muss etwas länger beschrieben werden.'),
   beschreibung: z.string().min(1, 'Beschreibung muss etwas länger werden.'),
   ort: ortsSchema,
-  anzeigebild: mediaSchema,
+  anzeigebild: z.string().min(1, 'Anzeigebild muss ausgewählt werden.'),
   leitung: z.object({
     userIds: z.array(z.string()).min(1, 'Es muss mindestens eine Leitung ausgewählt werden.')
   })

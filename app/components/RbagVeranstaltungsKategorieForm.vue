@@ -23,10 +23,7 @@ const createDefaultVoreinstellungen = (): VeranstaltungsKategorieSchema['voreins
     ort: undefined,
     land: undefined
   },
-  anzeigebild: {
-    objectName: '',
-    type: 'image'
-  },
+  anzeigebild: '',
   leitung: {
     userIds: []
   }
@@ -44,10 +41,7 @@ const formState = reactive<VeranstaltungsKategorieCreateSchema>({
       ...defaultVoreinstellungen.ort,
       ...props.initialState?.voreinstellungen?.ort
     },
-    anzeigebild: {
-      ...defaultVoreinstellungen.anzeigebild,
-      ...props.initialState?.voreinstellungen?.anzeigebild
-    },
+    anzeigebild: props.initialState?.voreinstellungen?.anzeigebild ?? '',
     leitung: {
       userIds: props.initialState?.voreinstellungen?.leitung?.userIds
         ? [...props.initialState.voreinstellungen.leitung.userIds]

@@ -33,8 +33,8 @@ const removeUser = (userId: string) => {
       :items="users"
       variant="none"
       placeholder="Nutzer auswählen"
-      :ui="{ content: 'w-64', base: 'p-0', item: 'flex items-center' }"
-      class="w-full mt-2"
+      :ui="{ content: 'w-64', base: 'p-0 ', item: 'flex items-center' }"
+      class="w-full mt-2 "
       multiple
       :loading="loading"
       description-key:="email.email"
@@ -47,6 +47,7 @@ const removeUser = (userId: string) => {
           v-if="selectedUsers.length === 0"
           :title="emptyLabel ?? 'Keiner ausgewählt'"
           class="w-full"
+          :ui="{ root: 'bg-transparent border-0' }"
           :actions="[
             {
               label: 'Hinzufügen',

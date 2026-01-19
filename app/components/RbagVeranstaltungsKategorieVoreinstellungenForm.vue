@@ -24,11 +24,11 @@ const users = computed({
 
 const handleFileUpload = async (file: File | null | undefined) => {
   if (!file) {
-    voreinstellungen.value.anzeigebild.objectName = ''
+    voreinstellungen.value.anzeigebild = ''
     return
   }
   const tempFile = await uploadFileToTempStorage(file)
-  voreinstellungen.value.anzeigebild.objectName = tempFile.key
+  voreinstellungen.value.anzeigebild = tempFile.key
 }
 </script>
 
@@ -66,7 +66,7 @@ const handleFileUpload = async (file: File | null | undefined) => {
     <div class="grid gap-4">
       <UFormField
         label="Anzeigebild"
-        name="voreinstellungen.anzeigebild.objectName"
+        name="voreinstellungen.anzeigebild"
       >
         <UFileUpload
           label="Drop your image here"
