@@ -133,6 +133,7 @@ function parseSignatureHeader(header: string): SignedHeader {
         break
       }
       case signingVersion: {
+        if (!value) throw ErrInvalidHeader
         try {
           const buf = Buffer.from(value, 'hex')
           // Buffer.from(hex) doesn't throw on all invalid strings; enforce even-length + valid chars.
