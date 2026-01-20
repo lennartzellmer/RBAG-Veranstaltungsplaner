@@ -16,6 +16,11 @@ export const categoryMachine = setup({
     context: {} as {
       categoryCreateActorRef?: SpawnedCategoryCreateMachine
       categoryUpdateActorRef?: SpawnedCategoryUpdateMachine
+    },
+    children: {} as {
+      categoryCreateMachine: 'categoryCreateMachine'
+      categoryUpdateMachine: 'categoryUpdateMachine'
+      fetchPaginatedMachine: 'fetchPaginatedMachine'
     }
   },
   actions: {
@@ -29,7 +34,7 @@ export const categoryMachine = setup({
     })
   }
 }).createMachine({
-  /** @xstate-layout N4IgpgJg5mDOIC5QGMCGAXMUD2AnAngLKrIAWAlgHZgB0sp2A7gMIZZ7lwDEAogCIBJACoBtAAwBdRKAAO2WOXTlslaSAAeiAEwBmAKw0ALGICMAdgBsh4yYCcYswBoQ+bYa01bADgs6tWizM9MQDbAF8w5zRMHAJiMipaeiZWGI5uZgAlHgBBIR5xKSQQOQUlFTVNBH8dGhMTHX0TCwsxQxM9LWdXBC8TGjExHTMvYYDje0MIqLZYohIKahpIRVT2Ai4IFST0Nhpo9fmEpZX0NbnCtVLFZVViqrNavTMtPRN3W0M-LScXRH1ag4tA4xD4OiZdNMQAc5vFFrRkLgwGxznh8JttnRdph9rM0XDEvskSi8QRLsVruU7qAqg1DJ4QoMzBDRrYzF9uogALQdIwjSw6ExeQxssxiiKRECUbAQOBqGH4haJK7yG4Ve7ciw0AKmQIWEwOeoOWychA8kI0LymMxDLR0sR6dxQhVxJVLZIsUmceAU1VUyqIdo0R7ePw6Ly2LReCNdP4IZoGQW6UEddoBMzO0lHeHLCCrLMqsq3AMIHStGidHzBSwvQVePSmuxa0Zaex+R6tn4mTNpV3HBHEzCogiFtXUjT-CweTrtB0-eymQwNuNWmh+IWdIIvNreCVhIA */
+  /** @xstate-layout N4IgpgJg5mDOIC5QGMCGAXMUD2AnAngLKrIAWAlgHZgB0sp2A7gMIZZ7lwDEAogCIBJACoBtAAwBdRKAAO2WOXTlslaSAAeiACwA2AEw0AnIZ1iAHMZ0BGQwFYA7FoA0IfIj077NHbZ2GxhlamZlpWZgC+4S5omDgExGRUtPRMrLEc3MwASjwAgkI84lJIIHIKSipqmgi6BpbmljYOzq6IVloAzDQdWmJaZnq2ZlYdYvY6kdFscUQkFNQ0kIpp7ARcECq0VABu2ADWtDGr+ACqMhBsCfNgRWplisqqJdW1RiYNJk2OLm4IenpiGhmDoeQzDexmTy2WxaSYgI4zK5JGjIXBgNgrGbrTY0Hb7Q7TPD4Zhoy5zJK3Er3CpPUAvHQ6IxmexiDpmPpaQz2QI6H6IEw0WxBUZ9EEdQxaWwdSJRECUbAQOBqBFEpHUO7yB6VZ6IAC0vNaCH1NDEprN5vN9jhKvi5IWKRYhNwnHgVM1NKq2j0fIQhi6Yh8Vis5n6+g6tkM1qds0SCyW6ExRI15UenoQ9j0XTBDgC9iDFjE3sNANs3nFIJZPT04yj6VtscOpMwiYIya1tI0iAzWbMOa5+f8Rd+w26-0MmccHRGkJl4SAA */
   context: {},
   id: 'categoryMachine',
   initial: 'showCategories',

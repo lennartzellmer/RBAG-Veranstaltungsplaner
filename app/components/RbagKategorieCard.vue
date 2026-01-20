@@ -29,5 +29,6 @@ defineEmits(['edit'])
         @click="$emit('edit')"
       />
     </div>
+    <slot />
   </div>
 </template>

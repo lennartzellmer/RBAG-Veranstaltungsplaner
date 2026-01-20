@@ -4,8 +4,9 @@ import { categoryMachine } from '~/machines/categoryMachine/category.machine'
 
 const { snapshot: snap, send, actorRef } = useActor(categoryMachine)
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const createMachineRef = useSelector(actorRef, state => state.children.categoryCreateMachine) as any
+const createMachineRef = useSelector(actorRef, state => state.children.categoryCreateMachine)
+
+const editMachineRef = useSelector(actorRef, state => state.children.categoryUpdateMachine)
 
 const fetchMachineRef = useSelector(
   actorRef,
@@ -29,7 +30,15 @@ const state = useSelector(fetchMachineRef, state => state)
           :key="kategorie.id"
           :title="kategorie.name"
           :description="kategorie.beschreibung"
-        />
+          @edit="send({ type: 'EDIT', categoryId: kategorie.id })"
+        >
+          <RbagVeranstaltungsKategorieSlideOverEdit
+            :category-update-actor-ref="editMachineRef"
+            :category-id="kategorie.id"
+            :open="snap.matches('editCategory')"
+            @close="editMachineRef?.send({ type: 'CLOSE' })"
+          />
+        </RbagKategorieCard>
       </div>
       <RbagVeranstaltungsKategorieSlideOverCreate
         :category-create-actor-ref="createMachineRef"
