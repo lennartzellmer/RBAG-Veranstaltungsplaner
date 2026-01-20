@@ -42,7 +42,7 @@ importers:
         version: 4.15.1(vue@3.5.25(typescript@5.9.3))(zod@4.1.13)
       '@xstate/vue':
         specifier: 5.0.0
-        version: 5.0.0(vue@3.5.25(typescript@5.9.3))(xstate@5.24.0)
+        version: 5.0.0(vue@3.5.25(typescript@5.9.3))(xstate@5.25.1)
       '@zitadel/zitadel-node':
         specifier: 4.1.0-beta.5
         version: 4.1.0-beta.5(patch_hash=82f27b7ca7384eca8921246942d5ae4fce2ba2091df8a6377e53f5837d7ee65b)
@@ -89,8 +89,8 @@ importers:
         specifier: latest
         version: 4.6.3(vue@3.5.25(typescript@5.9.3))
       xstate:
-        specifier: ^5.24.0
-        version: 5.24.0
+        specifier: ^5.25.1
+        version: 5.25.1
       zod:
         specifier: 4.1.13
         version: 4.1.13
@@ -100,7 +100,7 @@ importers:
         version: 3.20.1(@jest/globals@30.2.0)(@vue/test-utils@2.4.6)(happy-dom@20.0.10)(jsdom@27.2.0)(magicast@0.5.1)(playwright-core@1.56.1)(typescript@5.9.3)(vitest@4.0.13(@opentelemetry/api@1.9.0)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@27.2.0)(lightningcss@1.30.2)(terser@5.38.1)(yaml@2.8.1))
       '@statelyai/inspect':
         specifier: 0.4.0
-        version: 0.4.0(ws@8.18.3)(xstate@5.24.0)
+        version: 0.4.0(ws@8.18.3)(xstate@5.25.1)
       '@vitest/coverage-v8':
         specifier: 4.0.13
         version: 4.0.13(vitest@4.0.13(@opentelemetry/api@1.9.0)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@27.2.0)(lightningcss@1.30.2)(terser@5.38.1)(yaml@2.8.1))
@@ -7055,8 +7055,8 @@ packages:
     engines: {node: '>= 0.10.0'}
     hasBin: true
 
-  xstate@5.24.0:
-    resolution: {integrity: sha512-h/213ThFfZbOefUWrLc9ZvYggEVBr0jrD2dNxErxNMLQfZRN19v+80TaXFho17hs8Q2E1mULtm/6nv12um0C4A==}
+  xstate@5.25.1:
+    resolution: {integrity: sha512-oyvsNH5pF2qkHmiHEMdWqc3OjDtoZOH2MTAI35r01f/ZQWOD+VLOiYqo65UgQET0XMA5s9eRm8fnsIo+82biEw==}
 
   y-protocols@1.0.7:
     resolution: {integrity: sha512-YSVsLoXxO67J6eE/nV4AtFtT3QEotZf5sK5BHxFBXso7VDUT3Tx07IfA6hsu5Q5OmBdMkQVmFZ9QOA7fikWvnw==}
@@ -10025,7 +10025,7 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@statelyai/inspect@0.4.0(ws@8.18.3)(xstate@5.24.0)':
+  '@statelyai/inspect@0.4.0(ws@8.18.3)(xstate@5.25.1)':
     dependencies:
       fast-safe-stringify: 2.1.1
       isomorphic-ws: 5.0.0(ws@8.18.3)
@@ -10033,7 +10033,7 @@ snapshots:
       safe-stable-stringify: 2.5.0
       superjson: 1.13.3
       uuid: 9.0.1
-      xstate: 5.24.0
+      xstate: 5.25.1
     transitivePeerDependencies:
       - ws
 
@@ -10947,11 +10947,11 @@ snapshots:
     dependencies:
       vue: 3.5.25(typescript@5.9.3)
 
-  '@xstate/vue@5.0.0(vue@3.5.25(typescript@5.9.3))(xstate@5.24.0)':
+  '@xstate/vue@5.0.0(vue@3.5.25(typescript@5.9.3))(xstate@5.25.1)':
     dependencies:
       vue: 3.5.25(typescript@5.9.3)
     optionalDependencies:
-      xstate: 5.24.0
+      xstate: 5.25.1
 
   '@zitadel/zitadel-node@4.1.0-beta.5(patch_hash=82f27b7ca7384eca8921246942d5ae4fce2ba2091df8a6377e53f5837d7ee65b)':
     dependencies:
@@ -15281,7 +15281,7 @@ snapshots:
       cssfilter: 0.0.10
     optional: true
 
-  xstate@5.24.0: {}
+  xstate@5.25.1: {}
 
   y-protocols@1.0.7(yjs@13.6.29):
     dependencies:
